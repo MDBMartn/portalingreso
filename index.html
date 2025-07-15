@@ -19,6 +19,9 @@
             font-size: 1.2em;
             margin: 20px 0;
         }
+        .bold {
+            font-weight: bold;
+        }
         .button {
             display: inline-block;
             margin: 15px;
@@ -29,16 +32,68 @@
             border: none;
             border-radius: 5px;
             text-decoration: none;
+            pointer-events: none;
+            opacity: 0.5;
         }
-        .button:hover {
-            background-color: #005a9e;
+        .button.enabled {
+            pointer-events: auto;
+            opacity: 1;
+        }
+        .checkbox-container {
+            margin: 30px 0;
+        }
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Bienvenido a la Inducción de Seguridad en Instalaciones <br>de Air Products Argentina.</h1>
+
+    <p>Antes de comenzar asegurate de leer las <span class="bold">Políticas Generales de Air Products para Visitantes y Contratistas</span>:</p>
+    <p>https://github.com/mdbmartn/portalingreso/raw/main/SiteInductionOverviewAPPoliciesVisitorsContractors%20ES.pdf</p>
+
+    <div class="checkbox-container">
+        <input type="checkbox" id="acepto" onchange="toggleButtons()">
+        <label for="acepto">He leído y acepto las Políticas Generales de Air Products</label>
+    </div>
+
     <p>Por favor selecciona una opción para proceder al formulario correspondiente:</p>
-    <a class="button" href="https://forms.office.com/r/dt1dV9sfa7" target="_blank">Visitas</a>
-    <a class="button" href="https://forms.office.com/r/PLKHBkD0RR" target="_blank">Contratistas</a>
+
+    <a class="button" id="btnVisitas" href="#" onclick="return validar('https://forms.office.com/r/dt1dV9sfa7')">Visitas</a>
+    <a class="button" id="btnContratistas" href="#" onclick="return validar('https://forms.office.com/r/PLKHBkD0RR')">Contratistas</a>
+
+    <p id="error-message">Debe aceptar las Políticas generales</p>
+
+    <script>
+        function toggleButtons() {
+            var checkbox = document.getElementById('acepto');
+            var btnVisitas = document.getElementById('btnVisitas');
+            var btnContratistas = document.getElementById('btnContratistas');
+            var errorMsg = document.getElementById('error-message');
+
+            if (checkbox.checked) {
+                btnVisitas.classList.add('enabled');
+                btnContratistas.classList.add('enabled');
+                errorMsg.style.display = 'none';
+            } else {
+                btnVisitas.classList.remove('enabled');
+                btnContratistas.classList.remove('enabled');
+            }
+        }
+
+        function validar(url) {
+            var checkbox = document.getElementById('acepto');
+            var errorMsg = document.getElementById('error-message');
+            if (!checkbox.checked) {
+                errorMsg.style.display = 'block';
+                return false;
+            }
+            window.open(url, '_blank');
+            return false;
+        }
+    </script>
 </body>
 </html>
