@@ -52,22 +52,21 @@
 <body>
     <h1>Bienvenido a la Inducción de Seguridad en Instalaciones <br>de Air Products Argentina.</h1>
 
-  
-    <p>Antes de comenzar asegurate de leer las <span class="bold">Políticas Generales de Air Products para Visitantes y Contratistas</span>.</p>
-    <p>https://github.com/mdbmartn/portalingreso/raw/main/SiteInductionOverviewAPPoliciesVisitorsContractors%20ES.pdf</p>
-    
+    <p>Antes de comenzar asegurate de leer las 
+        https://github.com/mdbmartn/portalingreso/raw/main/SiteInductionOverviewAPPoliciesVisitorsContractors%20ES.pdf.
+    </p>
+
     <div class="checkbox-container">
         <input type="checkbox" id="acepto" onchange="toggleButtons()">
         <label for="acepto">He leído y acepto las Políticas Generales de Air Products</label>
     </div>
-
 
     <p>Por favor selecciona una opción para proceder al formulario correspondiente:</p>
 
     <a class="button" id="btnVisitas" href="#" onclick="return validar('https://forms.office.com/r/dt1dV9sfa7')">Visitas</a>
     <a class="button" id="btnContratistas" href="#" onclick="return validar('https://forms.office.com/r/PLKHBkD0RR')">Contratistas</a>
 
-    <p id="error-message">Debe aceptar las Políticas Generales para Visitas y Contratistas de Air Products</p>
+    <p id="error-message">Debe aceptar las Políticas generales</p>
 
     <script>
         function toggleButtons() {
